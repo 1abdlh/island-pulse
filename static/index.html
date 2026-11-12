@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#0b0f1b"><meta name="description" content="Island Pulse: your live Fortnite creator analytics dashboard.">
+ <title>Island Pulse — Creator Analytics</title>
+ <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+ <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+ <div class="shell">
+  <aside class="sidebar">
+   <div class="brand"><div class="brand-icon"><svg viewBox="0 0 32 32"><path d="M2 18h7l4-11 5 20 4-11h8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="brand-word">ISLAND<span>PULSE</span><small>CREATOR INTELLIGENCE</small></div></div>
+   <p class="nav-label">WORKSPACE</p>
+   <nav class="nav" id="nav">
+    <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span> Overview <span class="nav-arrow">›</span></button>
+    <button class="nav-item" data-view="creators"><span class="nav-icon">♙</span> Creators <span class="nav-count">10</span></button>
+    <button class="nav-item" data-view="islands"><span class="nav-icon">◇</span> Islands</button>
+    <button class="nav-item" data-view="history"><span class="nav-icon">⌁</span> History</button>
+   </nav>
+   <p class="nav-label sources-label">YOUR TRACKING</p>
+   <div class="tracking-note"><span class="track-orbit"><span></span></span><div><strong>10 creators tracked</strong><small>All profiles configured</small></div></div>
+   <div class="sidebar-bottom"><div class="data-tip"><div class="tip-mark">i</div><strong>Made for your portfolio</strong><p>One view for the 10 creator profiles you selected.</p></div><div class="sidebar-footer">ISLAND PULSE <span>•</span> V1.0</div></div>
+  </aside>
+
+  <main class="content">
+   <div class="topbar"><div class="breadcrumb">WORKSPACE <span>/</span> <strong id="viewName">Overview</strong></div><div class="top-right"><div id="sourceBadge" class="source-badge"><span class="status-dot"></span> Reference snapshot</div><div id="clock" class="clock"></div><button class="icon-button" id="refreshBtn" title="Refresh server readings" aria-label="Refresh server readings"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M5 9a8 8 0 0 1 14-2l1 5M4 12l1 5a8 8 0 0 0 14-2"/></svg></button></div></div>
+
+   <section class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> FORTNITE CREATIVE ANALYTICS</div><h1 id="pageTitle">Your creator universe<span class="accent">.</span></h1><p id="subtitle">Every creator. Every island. All in one place.</p></div><div class="headline-right"><div class="tiny-label">DATA COLLECTION</div><div id="lastUpdated">REFERENCE · NOV 11, 2026</div></div></section>
+
+   <div class="banner" id="dataBanner"><div class="banner-icon">ℹ</div><div id="bannerText">Showing a reference snapshot from November 11, 2026. For live readings and automatic history, run the included server and deploy it online.</div><button id="bannerClose" aria-label="Dismiss notice">×</button></div>
+
+   <section id="overviewView" class="view">
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="substats" id="substats"></div>
+    <div class="feature-grid">
+     <section class="panel chart-panel"><div class="panel-heading"><div><div class="panel-eyebrow">ENGAGEMENT OVER TIME</div><h2 id="chartTitle">Combined player activity <span class="chart-glow">↗</span></h2><p id="chartSubtitle">CCU across all 10 creators</p></div><div class="chart-controls"><select id="chartMetric" aria-label="Chart metric"><option value="ccu">Current CCU</option><option value="minutes_played">Lifetime minutes</option><option value="plays_24h">24h plays</option><option value="players_24h">24h map players</option><option value="favorites">Lifetime favorites</option><option value="followers">Followers</option><option value="favorites_24h">24h favorites</option><option value="recommends_24h">24h recommends</option></select><div class="range-switch" id="rangeSwitch"><button data-range="1" >1H</button><button data-range="24" class="selected">24H</button><button data-range="168">7D</button><button data-range="720">30D</button></div></div></div><div class="chart-box"><canvas id="ccuChart" aria-label="Combined concurrent players timeline"></canvas><div class="chart-empty" id="chartEmpty"><span class="empty-icon">⌁</span><strong>Trend tracking starts with live collection</strong><p>Chart history fills automatically after the hosted tracker collects readings.</p></div></div><div class="chart-footer"><span id="chartLegend"><span class="chart-key"></span> Total current players</span><span id="chartInfo">Waiting for live history</span></div></section>
+     <section class="panel leaders-panel"><div class="panel-heading"><div><div class="panel-eyebrow">AT THIS SNAPSHOT</div><h2>Top creators</h2><p>Ranked by current CCU</p></div><span class="mini-pill">TOP 5</span></div><div id="leaderBars" class="leader-bars"></div><button class="subtle-link" data-navigate="creators">View all creators <span>↗</span></button></section>
+    </div>
+    <section class="panel table-panel"><div class="panel-heading table-top"><div><div class="panel-eyebrow">YOUR PORTFOLIO</div><h2>Creator performance <span class="count-label">10 creators</span></h2><p>Compare performance across the selected profiles</p></div><div class="table-controls"><div class="search-wrap"><span>⌕</span><input id="creatorSearch" type="search" placeholder="Search creators..." aria-label="Search creators"></div><button class="outline-button" id="exportBtn">↓ Export CSV</button></div></div><div class="table-scroll"><table><thead><tr><th>CREATOR</th><th>PLAYERS NOW</th><th>LIFETIME MINUTES</th><th>24H PLAYS</th><th>24H PLAYERS*</th><th>MAPS</th><th>DETAILS</th></tr></thead><tbody id="creatorRows"></tbody></table></div><div class="table-footer"><span>* Players summed per map; the same player may appear more than once.</span><span id="tableShowing">Showing 10 creators</span></div></section>
+   </section>
+
+   <section id="creatorsView" class="view hidden"><div class="section-intro"><h2>Creator leaderboard</h2><p>Compare every profile across more than just current players. Click any creator for its maps.</p></div><div class="panel table-panel"><div class="filter-row"><div class="search-wrap wide"><span>⌕</span><input id="creatorSearchFull" placeholder="Find a creator..." type="search" aria-label="Find a creator"></div><label class="filter-label">SORT BY <select id="creatorSort"><option value="ccu">Players now</option><option value="minutes_played">Lifetime minutes</option><option value="plays_24h">24h plays</option><option value="players_24h">24h players</option><option value="favorites">Favorites</option><option value="followers">Followers</option></select></label><button id="exportFullBtn" class="outline-button">↓ Export CSV</button></div><div class="table-scroll"><table><thead><tr><th>CREATOR</th><th>PLAYERS NOW</th><th>LIFETIME MINUTES</th><th>24H PLAYS</th><th>24H PLAYERS*</th><th>FAVORITES</th><th>FOLLOWERS</th><th>MAPS</th></tr></thead><tbody id="fullRows"></tbody></table></div></div></section>
+
+   <section id="islandsView" class="view hidden"><div class="section-intro"><h2>Island explorer</h2><p>View every island detected for your 10 creators, with map-level engagement stats.</p></div><div class="panel table-panel"><div class="filter-row"><div class="search-wrap wide"><span>⌕</span><input id="islandSearch" placeholder="Search an island or creator..." type="search" aria-label="Search islands"></div><label class="filter-label">SORT BY <select id="islandSort"><option value="ccu">Players now</option><option value="minutes_played">Lifetime minutes</option><option value="plays_24h">24h plays</option><option value="all_time_peak">All-time peak</option></select></label></div><div class="table-scroll"><table><thead><tr><th>ISLAND</th><th>CREATOR</th><th>PLAYERS</th><th>ALL-TIME PEAK</th><th>LIFETIME MINUTES</th><th>24H PLAYS</th><th>24H FAVS</th><th>24H RECS</th></tr></thead><tbody id="islandRows"></tbody></table></div><div class="table-footer"><span>Latest daily Epic API metrics are shown in individual creator details when available.</span><span id="islandsShowing"></span></div></div></section>
+
+   <section id="historyView" class="view hidden"><div class="section-intro"><h2>Historical tracking</h2><p>Live readings saved by the server build an ongoing CCU timeline. Historical data cannot be reconstructed before collection begins.</p></div><div class="panel history-panel"><div class="panel-heading"><div><div class="panel-eyebrow">RECORDED READINGS</div><h2>Collection history</h2></div><span class="mini-pill" id="historyCount">0 readings</span></div><div id="historyStats" class="history-stats"></div><div id="historyRows" class="history-rows"></div></div></section>
+
+   <footer class="footer"><span>ISLAND PULSE</span><p>Independent analytics dashboard. Not affiliated with or endorsed by Epic Games or Fortnite.gg. CCU is a point-in-time reading. Lifetime values from Fortnite.gg are rounded.</p></footer>
+  </main>
+ </div>
+
+ <div id="drawerShade" class="drawer-shade hidden"></div><aside id="creatorDrawer" class="drawer" aria-label="Creator details" aria-hidden="true"><button class="drawer-close" id="drawerClose" aria-label="Close details">×</button><div id="drawerContent"></div></aside>
+ <div id="toast" class="toast" role="status"></div>
+ <script src="/static/reference.js"></script><script src="/static/app.js"></script>
+</body></html>
